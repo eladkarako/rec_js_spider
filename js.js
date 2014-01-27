@@ -7,9 +7,16 @@ var rec_spider = function(url){
               var d = document.implementation.createHTMLDocument("");
               d.getElementsByTagName("body")[0].innerHTML = data;
               aarr = d.getElementsByTagName("a");
+
               for(var i=0; i<aarr.length; i++){
-                console.log(aarr[i].href);
-                //document.getElementsByTagName("body")[0].innerHTML += "<hr/>" + d.getElementsByTagName("a").join("<br/>") + "<hr/>";
+                var a = aarr[i];
+
+                setTimeout(function(){
+                  console.log(a.href);                  
+                  document.getElementsByTagName("body")[0].innerHTML += a.href + "<br/>";
+                  rec_spider(a.href);
+                },10);
+
               }
               
          }
